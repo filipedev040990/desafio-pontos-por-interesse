@@ -1,5 +1,13 @@
-import { ForbiddenError, InvalidJwtError, InvalidParamError, JwtMissingError, MissingParamError, UnauthorizedError } from '../errors'
-import { HttpResponse } from '../types'
+import { HttpResponse } from '@/domain/controllers/controller.interface'
+import {
+  ForbiddenError,
+  InvalidJwtError,
+  InvalidParamError,
+  JwtMissingError,
+  MissingParamError,
+  UnauthorizedError,
+} from '../errors'
+
 import { badRequest, forbidden, serverError, unauthorized } from './http.helper'
 
 export const handleError = (error: any): HttpResponse => {
