@@ -29,6 +29,7 @@
   name: string
   xCoord: number
   yCoord: number
+  createdAt: Date
 }
 ```
 

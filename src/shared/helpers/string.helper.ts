@@ -8,14 +8,17 @@ export const isValidPhoneNumber = (phoneNumber: string): boolean => {
   return regex.test(phoneNumber)
 }
 
-
 export const obfuscateValue = (object: any): object => {
   const valuesToBeObfuscated = ['password']
-  valuesToBeObfuscated.forEach(word => {
+  valuesToBeObfuscated.forEach((word) => {
     if (word in object) {
       object[word] = '[OBFUSCATED]'
     }
   })
 
   return object
+}
+
+export const isValidString = (value: string): boolean => {
+  return value !== '' && value !== undefined && value !== null
 }
