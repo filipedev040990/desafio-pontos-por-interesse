@@ -1,11 +1,15 @@
-type POIBase = {
+export type CreatePOIUseCaseInput = {
   name: string
   xCoord: number
   yCoord: number
 }
 
-export type CreatePOIUseCaseInput = POIBase
-export type CreatePOIRepositoryInput = POIBase & {
+export type CreatePOIRepositoryInput = {
   id: string
+  name: string
+  xCoord: number
+  yCoord: number
   createdAt: Date
 }
+
+export type POIOutput = CreatePOIRepositoryInput
