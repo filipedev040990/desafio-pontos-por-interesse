@@ -9,10 +9,10 @@
 
 ## Listar os pontos de interesse
 
-⛔ Usecase
-⛔ Controller
-⛔ Repositorio
-⛔ Rota
+✅ Usecase
+✅ Controller
+✅ Repositorio
+✅ Rota
 
 ## Listar os ponto de interesse por proximidade
 
