@@ -1,9 +1,9 @@
 services:
-  project_name:
+  desafio_poi:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: "project_name"
+    container_name: 'desafio_poi'
     restart: always
     ports:
       - 3000:3000
@@ -20,12 +20,12 @@ services:
     container_name: database
     restart: always
     ports:
-      - "3306:3306"
+      - '3306:3306'
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root_password}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-password}
+      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD:-password}
       MYSQL_DATABASE: ${MYSQL_DATABASE:-dbname}
-      TZ: "America/Sao_Paulo"
+      TZ: 'America/Sao_Paulo'
     env_file:
       - .env
     volumes:

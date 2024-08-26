@@ -1,9 +1,9 @@
-import { HttpRequest } from '@/domain/controllers/controller.interface'
+import { ControllerInterface, HttpRequest } from '@/domain/controllers/controller.interface'
 import { CreatePOIUseCaseInterface } from '@/domain/usecases/create-poi.interface'
 import { handleError } from '@/shared/helpers/error.helper'
 import { success } from '@/shared/helpers/http.helper'
 
-export class CreatePOIController {
+export class CreatePOIController implements ControllerInterface {
   constructor(private readonly createPOIUseCase: CreatePOIUseCaseInterface) {}
   async execute(input: HttpRequest): Promise<any> {
     try {

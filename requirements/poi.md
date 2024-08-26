@@ -2,10 +2,10 @@
 
 ## Cadastrar um ponto de interesse
 
-⛔ Usecase
-⛔ Controller
-⛔ Repositorio
-⛔ Rota
+✅ Usecase
+✅ Controller
+✅ Repositorio
+✅ Rota
 
 ## Listar os pontos de interesse
 
