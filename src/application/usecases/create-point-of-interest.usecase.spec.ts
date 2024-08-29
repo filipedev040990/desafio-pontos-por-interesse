@@ -1,20 +1,20 @@
-import { CreatePOIUseCaseInput } from '@/domain/usecases/poi.types'
-import { CreatePOIUseCase } from './create-poi.usecase'
+import { CreatePointOfInterestUseCaseInput } from '@/domain/usecases/point-of-interest.types'
+import { CreatePointOfInterestUseCase } from './create-point-of-interest.usecase'
 import { InvalidParamError } from '@/shared/errors'
-import { POIRepositoryInterface } from '@/domain/repositories/poi.interface'
+import { PointOfInterestRepositoryInterface } from '@/domain/repositories/point-of-interest.interface'
 import { UUIDServiceInterface } from '@/domain/services/uuid.interface'
 import { mock } from 'jest-mock-extended'
 import MockDate from 'mockdate'
 
-const poiRepository = mock<POIRepositoryInterface>()
+const poiRepository = mock<PointOfInterestRepositoryInterface>()
 const uuidService = mock<UUIDServiceInterface>()
 
-describe('CreatePOIUseCase', () => {
-  let sut: CreatePOIUseCase
-  let input: CreatePOIUseCaseInput
+describe('CreatePointOfInterestUseCase', () => {
+  let sut: CreatePointOfInterestUseCase
+  let input: CreatePointOfInterestUseCaseInput
 
   beforeEach(() => {
-    sut = new CreatePOIUseCase(poiRepository, uuidService)
+    sut = new CreatePointOfInterestUseCase(poiRepository, uuidService)
     input = {
       name: 'Any Point',
       xCoord: 20,
@@ -47,7 +47,7 @@ describe('CreatePOIUseCase', () => {
     await expect(sut.execute(input)).rejects.toThrowError(new InvalidParamError('yCoord'))
   })
 
-  test('should call POIRepository.save once and with correct values', async () => {
+  test('should call PointOfInterestRepository.save once and with correct values', async () => {
     await sut.execute(input)
     expect(poiRepository.save).toHaveBeenCalledTimes(1)
     expect(poiRepository.save).toHaveBeenCalledWith({

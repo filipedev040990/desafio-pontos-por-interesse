@@ -1,13 +1,13 @@
 import { ControllerInterface, HttpRequest, HttpResponse } from '@/domain/controllers/controller.interface'
-import { CreatePOIUseCaseInterface } from '@/domain/usecases/create-poi.interface'
+import { CreatePointOfInterestUseCaseInterface } from '@/domain/usecases/create-point-of-interest.interface'
 import { handleError } from '@/shared/helpers/error.helper'
 import { success } from '@/shared/helpers/http.helper'
 
-export class CreatePOIController implements ControllerInterface {
-  constructor(private readonly createPOIUseCase: CreatePOIUseCaseInterface) {}
+export class CreatePointOfInterestController implements ControllerInterface {
+  constructor(private readonly createPointOfInterestUseCase: CreatePointOfInterestUseCaseInterface) {}
   async execute(input: HttpRequest): Promise<HttpResponse> {
     try {
-      await this.createPOIUseCase.execute(input?.body)
+      await this.createPointOfInterestUseCase.execute(input?.body)
       return success(204, null)
     } catch (error) {
       return handleError(error)

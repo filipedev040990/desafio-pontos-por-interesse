@@ -1,30 +1,30 @@
 import { HttpRequest } from '@/domain/controllers/controller.interface'
-import { CreatePOIController } from './create-poi.controller'
+import { CreatePointOfInterestController } from './create-point-of-interest.controller'
 import { mock } from 'jest-mock-extended'
-import { CreatePOIUseCaseInterface } from '@/domain/usecases/create-poi.interface'
+import { CreatePointOfInterestUseCaseInterface } from '@/domain/usecases/create-point-of-interest.interface'
 import { InvalidParamError } from '@/shared/errors'
 import { badRequest } from '@/shared/helpers/http.helper'
 
-const createPOIUseCase = mock<CreatePOIUseCaseInterface>()
+const createPointOfInterestUseCase = mock<CreatePointOfInterestUseCaseInterface>()
 
-describe('CreatePOIController', () => {
-  let sut: CreatePOIController
+describe('CreatePointOfInterestController', () => {
+  let sut: CreatePointOfInterestController
   let input: HttpRequest
 
   beforeEach(() => {
-    sut = new CreatePOIController(createPOIUseCase)
+    sut = new CreatePointOfInterestController(createPointOfInterestUseCase)
     input = {
       body: {
         name: 'Any Point',
         xCoord: 20,
-        yCoord: 10,
-      },
+        yCoord: 10
+      }
     }
   })
-  test('should call CreatePOIUSeCase once and with correct values', async () => {
+  test('should call CreatePointOfInterestUSeCase once and with correct values', async () => {
     await sut.execute(input)
-    expect(createPOIUseCase.execute).toHaveBeenCalledTimes(1)
-    expect(createPOIUseCase.execute).toHaveBeenCalledWith(input.body)
+    expect(createPointOfInterestUseCase.execute).toHaveBeenCalledTimes(1)
+    expect(createPointOfInterestUseCase.execute).toHaveBeenCalledWith(input.body)
   })
 
   test('should return a correct output on success', async () => {
@@ -34,7 +34,7 @@ describe('CreatePOIController', () => {
 
   test('should return a correct error if UseCase throws', async () => {
     const error = new InvalidParamError('anyParam')
-    createPOIUseCase.execute.mockImplementationOnce(() => {
+    createPointOfInterestUseCase.execute.mockImplementationOnce(() => {
       throw error
     })
     const output = await sut.execute(input)

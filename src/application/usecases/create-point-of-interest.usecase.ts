@@ -1,17 +1,17 @@
-import { POIRepositoryInterface } from '@/domain/repositories/poi.interface'
+import { PointOfInterestRepositoryInterface } from '@/domain/repositories/point-of-interest.interface'
 import { UUIDServiceInterface } from '@/domain/services/uuid.interface'
-import { CreatePOIUseCaseInterface } from '@/domain/usecases/create-poi.interface'
-import { CreatePOIUseCaseInput } from '@/domain/usecases/poi.types'
+import { CreatePointOfInterestUseCaseInterface } from '@/domain/usecases/create-point-of-interest.interface'
+import { CreatePointOfInterestUseCaseInput } from '@/domain/usecases/point-of-interest.types'
 import { InvalidParamError } from '@/shared/errors'
 import { isValidNumer } from '@/shared/helpers/number.helper'
 import { isValidString } from '@/shared/helpers/string.helper'
 
-export class CreatePOIUseCase implements CreatePOIUseCaseInterface {
+export class CreatePointOfInterestUseCase implements CreatePointOfInterestUseCaseInterface {
   constructor(
-    private readonly poiRepository: POIRepositoryInterface,
+    private readonly poiRepository: PointOfInterestRepositoryInterface,
     private readonly uuidService: UUIDServiceInterface
   ) {}
-  async execute(input: CreatePOIUseCaseInput): Promise<void> {
+  async execute(input: CreatePointOfInterestUseCaseInput): Promise<void> {
     this.validate(input)
 
     await this.poiRepository.save({
@@ -23,7 +23,7 @@ export class CreatePOIUseCase implements CreatePOIUseCaseInterface {
     })
   }
 
-  validate(input: CreatePOIUseCaseInput): void {
+  validate(input: CreatePointOfInterestUseCaseInput): void {
     const { name, xCoord, yCoord } = input
     if (!isValidString(name)) {
       throw new InvalidParamError('name')

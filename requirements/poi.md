@@ -21,7 +21,7 @@
 ⛔ Repositorio
 ⛔ Rota
 
-### Objeto POI
+### Objeto PointOfInterest
 
 ```
 {
