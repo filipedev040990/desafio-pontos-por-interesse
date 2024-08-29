@@ -1,267 +1,307 @@
 {
-	"openapi": "3.0.0",
-	"info": {
-		"title": "Example",
-		"description": "Example description",
-		"version": "1.0.0",
-		"contact": {
-			"email": "filipedev040990@gmail.com"
-		}
-	},
-	"servers": [
-		{
-			"url": "/v1"
-		}
-	],
-	"tags": [
-		{
-			"name": "Example"
-		}
-	],
-	"paths": {
-		"/route/test": {
-			"post": {
-				"tags": [
-					"Example"
-				],
-				"operationId": "example-identifier",
-				"summary": "Example summary",
-				"description": "Description example",
-				"requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "test": {
-                    "type": "string",
-                    "example": "example",
-                    "description": "Description example."
-                  }
-                }
-              }
-            }
-          }
-        },
-				"responses": {
-					"201": {
-						"description": "Sucesso",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "string",
-											"example": "3b228995-20db-4558-8574-054c2e6ca0cb"
-										},
-                    "type": {
-                      "type": "string",
-                      "example": "email"
-                    },
-                    "recipient": {
-                      "type": "string",
-                      "example": "zedascouves@gmail.com"
-                    },
-                    "content": {
-                      "type": "string",
-                      "example": "Notificação de Teste"
-                    },
-                    "status": {
-                      "type": "string",
-                      "example": "waiting"
-                    },
-                    "scheduleDateHour": {
-                      "type": "string",
-                      "example": "2024-08-09 10:31:00"
-                    },
-                    "createdAt": {
-                      "type": "string",
-                      "example": "2024-08-09T13:29:18.435Z"
-                    }
-									}
-								}
-							}
-						}
-					},
-          "400": {
-            "description": "Erro de validação da solicitação",
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": "MissingParamError",
-                  "message": "Missing param: type"
-                }
-              }
-            }
-          },
-					"500": {
-						"description": "Error",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "object",
-									"properties": {
-										"status": {
-											"type": "string",
-											"example": "error"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-    "/route/get/{id}": {
-      "post": {
-        "tags": [
-          "Example"
-        ],
-        "operationId": "examnple-identifier",
-        "summary": "Summary example",
-        "description": "Description Example",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "3b228995-20db-4558-8574-054c2e6ca0cb"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Sucesso",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "example": "3b228995-20db-4558-8574-054c2e6ca0cb"
-                    },
-                    "test": {
-                      "type": "string",
-                      "example": "email"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Erro de validação da solicitação",
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": "InvalidParamError",
-                  "message": "Invalid param: id"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "example": "error"
-                    }
-                  }
-                }
-              }
-            }
-          }
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Example",
+        "description": "Example description",
+        "version": "1.0.0",
+        "contact": {
+            "email": "filipedev040990@gmail.com"
         }
-      }
     },
-    "/route": {
-      "get": {
-        "tags": [
-          "Example"
-        ],
-        "operationId": "get-all-example-identifier",
-        "summary": "Example",
-        "description": "Example",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "3b228995-20db-4558-8574-054c2e6ca0cb"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Sucesso",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "oneOf": [{
-                      "type": "object",
-                      "properties": {
-                        "test": {
-                          "type": "string",
-                          "example": "3b228995-20db-4558-8574-054c2e6ca0cb"
-                        }
-                      }
-                    },{
-                      "type": "object",
-                      "properties": {
-                        "test": {
-                          "type": "string",
-                          "example": "d4a2fa1d-8428-40ca-bfa1-0326e2a97ad2"
-                        }
-                      }
-                    }]
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Erro de validação da solicitação",
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": "InvalidParamError",
-                  "message": "Invalid param: id"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "example": "error"
-                    }
-                  }
-                }
-              }
-            }
-          }
+    "servers": [
+        {
+            "url": "/v1"
         }
-      }
+    ],
+    "tags": [
+        {
+            "name": "Point Of Interest"
+        }
+    ],
+    "paths": {
+        "/poi": {
+            "post": {
+                "tags": [
+                    "Point Of Interest"
+                ],
+                "operationId": "poi-identifier",
+                "summary": "Cadastra um ponto de interesse",
+                "description": "Cadastra um ponto de interesse",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Churrascaria",
+                                        "description": "Nome do ponto."
+                                    },
+                                    "xCoord": {
+                                        "type": "number",
+                                        "example": 20,
+                                        "description": "Coordenada X do ponto de referência"
+                                    },
+                                    "yCoord": {
+                                        "type": "number",
+                                        "example": 20,
+                                        "description": "Coordenada Y do ponto de referência"
+                                    }
+                                },
+                                "required": ["name", "xCoord", "yCoord"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Erro de validação da solicitação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "error": "InvalidParamError",
+                                    "message": "Invalid param: name"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Point Of Interest"
+                ],
+                "operationId": "get-all-points",
+                "summary": "Retorna todos os pontos de interesse.",
+                "description": "Retorna todos os pontos de interesse.",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "2427211f-a6df-420e-be45-778eda3e1fd0",
+                                            "description": "Identificador do ponto."
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Churrascaria",
+                                            "description": "Nome do ponto."
+                                        },
+                                        "xCoord": {
+                                            "type": "number",
+                                            "example": 20,
+                                            "description": "Coordenada X do ponto de referência"
+                                        },
+                                        "yCoord": {
+                                            "type": "number",
+                                            "example": 10,
+                                            "description": "Coordenada Y do ponto de referência"
+                                        },
+                                        "createdAt": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-08-28T20:55:36.778Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro de validação da solicitação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "error": "InvalidParamError",
+                                    "message": "Invalid param: xCoord"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/poi/proximity": {
+            "get": {
+                "tags": [
+                    "Point Of Interest"
+                ],
+                "operationId": "get-points-by-proximity",
+                "summary": "Retorna pontos de interesse por proximidade.",
+                "description": "Retorna pontos de interesse por proximidade.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "xCoord",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "example": 20
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "yCoord",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "example": 10
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "dMax",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "example": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "2427211f-a6df-420e-be45-778eda3e1fd0",
+                                            "description": "Identificador do ponto."
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Churrascaria",
+                                            "description": "Nome do ponto."
+                                        },
+                                        "xCoord": {
+                                            "type": "number",
+                                            "example": 20,
+                                            "description": "Coordenada X do ponto de referência"
+                                        },
+                                        "yCoord": {
+                                            "type": "number",
+                                            "example": 10,
+                                            "description": "Coordenada Y do ponto de referência"
+                                        },
+                                        "createdAt": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-08-28T20:55:36.778Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro de validação da solicitação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "error": "InvalidParamError",
+                                    "message": "Invalid param: xCoord"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
-	}
 }
